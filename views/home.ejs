@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+    </head>
+    <script  src="https://kit.fontawesome.com/b3348ae33f.js"
+      crossorigin="anonymous"
+  ></script>
+     <link rel="stylesheet" href="/CSS/home.css">
+    <body>
+        <!-- <h1 id="page-heading">
+            <i class="fa-solid fa-address-book"></i>
+            TODO LIST!!
+        </h1> -->
+        <div id="Todo-container">
+             <div id="page-heading-container">
+                <h1 id="page-heading">
+                    <i class="fa-solid fa-address-book"></i>
+                    TODO LIST!!
+                </h1> 
+             </div>
+             <hr>
+
+             <div id="discription-box-container">
+                <div id="discription-heading">DESCRIPTION</div>
+                <form id="new-todolist" action="/create-todolist" method="POST">
+                <input type="text" id="Description-box" name="Description" placeholder="What do you need to do?" required>  
+                </textarea>
+                
+             </div>
+             <hr>
+             <div id="left-right-container">
+                <div id="left-side"> 
+                    <p id="left-side-heading">CATEGORY</p> 
+                     <select name="category" id="category-list" required>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="school">School</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="others">Others</option>
+                      </select>
+                </div>
+                <div id="right-side"> 
+                    <p id="right-side-heading">DUE DATE</p>
+                    <input type="datetime-local" id="due-date" name="dueDate">
+                </div>
+            </div>
+            <hr>
+           <div id="add-delete-container">
+              <div>
+                <button class="button-add">ADD TASK
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </form>
+              <div>
+                <button class="button-del" onclick=deletetodolist()>DELETE TASK
+                </button>
+              </div>
+           </div>
+           <hr>   
+           <div id="todo-list-container"> 
+            <table>
+               <% for(i of minorProject){%> 
+                  <tr>
+                        <td><input type="checkbox" value="<%= i._id %>" name="taskid"></td>
+                        <td><%= i.description %>
+                        <td><%= i.duedate %></td></td>
+                      <td id="category"><%= i.category %></td>
+                  </tr>
+                <%}%>
+            </table>
+           </div>
+           
+        </div>
+
+    </body>
+    <script src="/JS/home.js"></script>
+</html>
